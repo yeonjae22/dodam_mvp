@@ -9,8 +9,9 @@
         android:id="@+id/btn_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:padding="20dp"
+        android:layout_margin="10dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="10dp"
         android:src="@drawable/ic_left_arrow" />
 
     <LinearLayout
@@ -74,7 +75,7 @@
                         android:id="@+id/btn_black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
+                        android:background="?attr/selectableItemBackgroundBorderless"
                         android:padding="5dp"
                         android:src="@drawable/ic_pencil_black" />
 
@@ -82,7 +83,7 @@
                         android:id="@+id/btn_red"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
+                        android:background="?attr/selectableItemBackgroundBorderless"
                         android:padding="5dp"
                         android:src="@drawable/ic_pencil_red" />
 
@@ -90,7 +91,7 @@
                         android:id="@+id/btn_blue"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
+                        android:background="?attr/selectableItemBackgroundBorderless"
                         android:padding="5dp"
                         android:src="@drawable/ic_pencil_blue" />
 
@@ -103,7 +104,7 @@
                             android:id="@+id/btn_eraser"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@android:color/transparent"
+                            android:background="?attr/selectableItemBackgroundBorderless"
                             android:padding="5dp"
                             android:src="@drawable/ic_erase" />
                     </LinearLayout>

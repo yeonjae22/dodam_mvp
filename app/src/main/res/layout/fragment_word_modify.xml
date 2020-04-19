@@ -9,13 +9,14 @@
         android:id="@+id/btn_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:padding="20dp"
+        android:layout_margin="10dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="10dp"
         android:src="@drawable/ic_left_arrow" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:weightSum="10">
 
@@ -107,20 +108,27 @@
                     </LinearLayout>
                 </RelativeLayout>
             </RelativeLayout>
-
-            <Button
-                android:id="@+id/btn_modify"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/draw_01"
-                android:fontFamily="@font/jsdongkang_regular"
-                android:padding="20dp"
-                android:text="@string/modified"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
-
         </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:weightSum="10"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:layout_weight="8"
+            android:id="@+id/btn_modify"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/draw_01"
+            android:fontFamily="@font/jsdongkang_regular"
+            android:padding="20dp"
+            android:text="@string/modified"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
     </LinearLayout>
 
 </LinearLayout>
