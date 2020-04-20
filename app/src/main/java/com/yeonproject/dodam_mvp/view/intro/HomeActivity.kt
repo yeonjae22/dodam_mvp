@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.yeonproject.dodam_mvp.R
 
-class MainActivity : AppCompatActivity(), HomeFragment.OnClickListener,
+class HomeActivity : AppCompatActivity(), HomeFragment.OnClickListener,
     LanguageFragment.OnClickListener, ThemeFragment.OnClickListener {
     override fun onClick() {
         back()
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity(), HomeFragment.OnClickListener,
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_home)
         replace(HomeFragment(), false)
     }
 
