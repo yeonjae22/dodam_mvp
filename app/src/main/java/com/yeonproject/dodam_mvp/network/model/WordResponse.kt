@@ -6,20 +6,18 @@ import java.io.Serializable
 data class WordResponse @JvmOverloads constructor(
     val english: String = "",
     val hangul: String = "",
-    val image: String = "",
-    val sound: String = ""
+    val image: String = ""
 ) : Serializable {
-    fun toWordItem(response: WordResponse, language: String): WordItem {
+    fun toWordItem(language: String): WordItem {
         var name = ""
         if (language == "english") {
-            name = response.english
+            name = english
         } else if (language == "hangul") {
-            name = response.hangul
+            name = hangul
         }
         return WordItem(
             name,
-            response.image,
-            response.sound
+            image
         )
     }
 }

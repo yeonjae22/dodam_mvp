@@ -4,6 +4,5 @@ import java.io.Serializable
 
 data class WordItem(
     val name: String = "",
-    val image: String = "",
-    val sound: String = ""
+    val image: String = ""
 ) : Serializable

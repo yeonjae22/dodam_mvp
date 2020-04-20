@@ -14,7 +14,7 @@ class ReviewPresenter(
             override fun onSuccess(response: List<WordResponse>) {
                 val items = mutableListOf<WordItem>()
                 for (i in response.indices) {
-                    items.add(response[i].toWordItem(response[i], language))
+                    items.add(response[i].toWordItem(language))
                 }
                 view.showWordList(items)
             }
