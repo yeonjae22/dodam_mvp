@@ -41,7 +41,7 @@ class WordListActivity : AppCompatActivity(), WordContract.View {
                 val intent = Intent(applicationContext, WordDetailActivity::class.java)
                 intent.putExtra(NAME, word.name)
                 intent.putExtra(IMAGE, word.image)
-                intent.putExtra(SOUND, word.sound)
+                intent.putExtra(LANGUAGE, language)
                 startActivity(intent)
             }
         })
@@ -56,6 +56,5 @@ class WordListActivity : AppCompatActivity(), WordContract.View {
         private const val THEME = "themeName"
         private const val NAME = "name"
         private const val IMAGE = "image"
-        private const val SOUND = "sound"
     }
 }
