@@ -34,6 +34,9 @@
         <activity
             android:name=".view.my_word.MyWordMenuActivity"
             android:launchMode="singleTask" />
+        <activity
+            android:name=".view.song.SongWebViewActivity"
+            android:launchMode="singleTask" />
     </application>
 
 </manifest>
