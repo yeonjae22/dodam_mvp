@@ -104,7 +104,8 @@
                             android:layout_height="wrap_content"
                             android:background="@color/black"
                             android:padding="10dp"
-                            android:src="@drawable/ic_close_white" />
+                            android:src="@drawable/ic_close_white"
+                            android:visibility="gone" />
                     </LinearLayout>
                 </RelativeLayout>
             </RelativeLayout>
@@ -112,17 +113,17 @@
     </LinearLayout>
 
     <LinearLayout
-        android:gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:weightSum="10"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:weightSum="10">
 
         <Button
-            android:layout_weight="8"
             android:id="@+id/btn_modify"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="8"
             android:background="@drawable/draw_01"
             android:fontFamily="@font/jsdongkang_regular"
             android:padding="20dp"

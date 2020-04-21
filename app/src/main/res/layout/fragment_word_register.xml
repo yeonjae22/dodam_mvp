@@ -104,7 +104,8 @@
                             android:layout_height="wrap_content"
                             android:background="@color/black"
                             android:padding="10dp"
-                            android:src="@drawable/ic_close_white" />
+                            android:src="@drawable/ic_close_white"
+                            android:visibility="gone" />
                     </LinearLayout>
                 </RelativeLayout>
             </RelativeLayout>
