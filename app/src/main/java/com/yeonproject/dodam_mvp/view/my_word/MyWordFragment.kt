@@ -61,9 +61,9 @@ class MyWordFragment : Fragment(), MyWordContract.View {
             MyWordAdapter.OnClickListener {
             override fun onClick(word: MyWordEntity) {
                 if (language == HANGUL) {
-                    listener.onClick(MyWordDetailFragment.newInstance(word.hangul, word.image))
+                    listener.onClick(MyWordDetailFragment.newInstance(language, word.hangul, word.image))
                 } else if (language == ENGLISH) {
-                    listener.onClick(MyWordDetailFragment.newInstance(word.english, word.image))
+                    listener.onClick(MyWordDetailFragment.newInstance(language, word.english, word.image))
                 }
 
             }
