@@ -6,11 +6,7 @@ import androidx.fragment.app.Fragment
 import com.yeonproject.dodam_mvp.R
 
 class HomeActivity : AppCompatActivity(), HomeFragment.OnClickListener,
-    LanguageFragment.OnClickListener, ThemeFragment.OnClickListener {
-    override fun onClick() {
-        back()
-    }
-
+    LanguageFragment.OnClickListener {
     override fun onClick(fragment: Fragment) {
         replace(fragment, true)
     }
@@ -30,9 +26,5 @@ class HomeActivity : AppCompatActivity(), HomeFragment.OnClickListener,
                 .commit()
 
         }
-    }
-
-    private fun back() {
-        supportFragmentManager.popBackStack()
     }
 }

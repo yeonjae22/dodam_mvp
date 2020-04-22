@@ -25,25 +25,18 @@ import java.io.InputStreamReader
 
 class WordRegisterFragment : Fragment(), BottomSheetImagePicker.OnImagesSelectedListener,
     WordRegisterContract.View {
+    private val dispatcher by lazy {
+        requireActivity().onBackPressedDispatcher
+    }
     override lateinit var presenter: WordRegisterContract.Presenter
-    private lateinit var listener: OnClickListener
     private var imageName: String = ""
     private lateinit var imageUri: Uri
 
     override fun showMessage(response: Boolean) {
         if (response) {
             context?.shortToast(R.string.success_register_word)
-            listener.onClick()
+            dispatcher.onBackPressed()
         }
-    }
-
-    interface OnClickListener {
-        fun onClick()
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        listener = (context as OnClickListener)
     }
 
     override fun onImagesSelected(uris: List<Uri>, tag: String?) {
@@ -88,7 +81,7 @@ class WordRegisterFragment : Fragment(), BottomSheetImagePicker.OnImagesSelected
         }
 
         btn_back.setOnClickListener {
-            listener.onClick()
+            dispatcher.onBackPressed()
         }
 
         btn_register.setOnClickListener {

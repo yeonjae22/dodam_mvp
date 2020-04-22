@@ -19,6 +19,9 @@ import kotlinx.android.synthetic.main.fragment_my_word_list.*
 
 
 class MyWordListFragment : Fragment(), MyWordListContract.View {
+    private val dispatcher by lazy {
+        requireActivity().onBackPressedDispatcher
+    }
     override lateinit var presenter: MyWordListContract.Presenter
     private val myWordAdapter = MyWordModifyAdapter()
     private lateinit var listener: OnClickListener
@@ -32,7 +35,6 @@ class MyWordListFragment : Fragment(), MyWordListContract.View {
 
     interface OnClickListener {
         fun onClick(fragment: Fragment)
-        fun onClick()
     }
 
     override fun onAttach(context: Context) {
@@ -68,7 +70,7 @@ class MyWordListFragment : Fragment(), MyWordListContract.View {
         setAdapter()
 
         btn_back.setOnClickListener {
-            listener.onClick()
+            dispatcher.onBackPressed()
         }
 
         myWordAdapter.setMoreButtonListener(object : MyWordModifyAdapter.MoreButtonListener {

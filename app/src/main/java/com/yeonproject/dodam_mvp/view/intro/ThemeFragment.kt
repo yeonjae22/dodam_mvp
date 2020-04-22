@@ -1,6 +1,5 @@
 package com.yeonproject.dodam_mvp.view.intro
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,15 +12,8 @@ import com.yeonproject.dodam_mvp.view.word.WordListActivity
 import kotlinx.android.synthetic.main.fragment_theme.*
 
 class ThemeFragment : Fragment() {
-    private lateinit var listener: OnClickListener
-
-    interface OnClickListener {
-        fun onClick()
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        listener = (context as OnClickListener)
+    private val dispatcher by lazy {
+        requireActivity().onBackPressedDispatcher
     }
 
     override fun onCreateView(
@@ -36,7 +28,7 @@ class ThemeFragment : Fragment() {
         val language = arguments?.getString(LANGUAGE) ?: ""
 
         btn_back.setOnClickListener {
-            listener.onClick()
+            dispatcher.onBackPressed()
         }
 
         btn_fruit.setOnClickListener {

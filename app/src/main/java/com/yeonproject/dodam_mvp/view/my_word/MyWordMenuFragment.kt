@@ -11,6 +11,9 @@ import com.yeonproject.dodam_mvp.view.intro.LanguageFragment
 import kotlinx.android.synthetic.main.fragment_my_word_menu.*
 
 class MyWordMenuFragment : Fragment() {
+    private val dispatcher by lazy {
+        requireActivity().onBackPressedDispatcher
+    }
     private lateinit var listener: OnClickListener
 
     interface OnClickListener {
@@ -30,6 +33,11 @@ class MyWordMenuFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        btn_back.setOnClickListener {
+            dispatcher.onBackPressed()
+        }
+
         btn_register.setOnClickListener {
             listener.onClick(WordRegisterFragment())
         }

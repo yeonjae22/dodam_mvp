@@ -13,11 +13,13 @@ import com.yeonproject.dodam_mvp.view.word.WordPaint
 import kotlinx.android.synthetic.main.fragment_my_word_detail.*
 
 class MyWordDetailFragment : Fragment() {
+    private val dispatcher by lazy {
+        requireActivity().onBackPressedDispatcher
+    }
     private lateinit var listener: OnClickListener
 
     interface OnClickListener {
         fun onClick(fragment: Fragment)
-        fun onClick()
     }
 
     override fun onAttach(context: Context) {
@@ -42,7 +44,7 @@ class MyWordDetailFragment : Fragment() {
         iv_image.glideImageSet(image, iv_image.measuredWidth, iv_image.measuredHeight)
 
         btn_back.setOnClickListener {
-            listener.onClick()
+            dispatcher.onBackPressed()
         }
 
         btn_red.setOnClickListener {

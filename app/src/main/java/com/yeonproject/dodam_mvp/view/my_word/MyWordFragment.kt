@@ -16,6 +16,9 @@ import com.yeonproject.dodam_mvp.view.my_word.presenter.MyWordPresenter
 import kotlinx.android.synthetic.main.fragment_my_word.*
 
 class MyWordFragment : Fragment(), MyWordContract.View {
+    private val dispatcher by lazy {
+        requireActivity().onBackPressedDispatcher
+    }
     override lateinit var presenter: MyWordContract.Presenter
     private lateinit var language: String
     private lateinit var listener: OnClickListener
@@ -23,7 +26,6 @@ class MyWordFragment : Fragment(), MyWordContract.View {
 
     interface OnClickListener {
         fun onClick(fragment: Fragment)
-        fun onClick()
     }
 
     override fun onAttach(context: Context) {
@@ -52,7 +54,7 @@ class MyWordFragment : Fragment(), MyWordContract.View {
         }
 
         btn_back.setOnClickListener {
-            listener.onClick()
+            dispatcher.onBackPressed()
         }
 
         myWordAdapter.setOnClickListener(object :

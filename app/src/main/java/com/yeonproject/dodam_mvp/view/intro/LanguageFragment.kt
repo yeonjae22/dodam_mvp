@@ -5,16 +5,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import com.yeonproject.dodam_mvp.R
 import kotlinx.android.synthetic.main.fragment_language.*
 
 class LanguageFragment : Fragment() {
+    private val dispatcher by lazy {
+        requireActivity().onBackPressedDispatcher
+    }
+//    private val backPressedCallback = object : OnBackPressedCallback(true) {
+//        override fun handleOnBackPressed() {
+//
+//        }
+//    }
     private lateinit var listener: OnClickListener
 
     interface OnClickListener {
         fun onClick(fragment: Fragment)
-        fun onClick()
     }
 
     override fun onAttach(context: Context) {
@@ -30,10 +38,12 @@ class LanguageFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        //dispatcher.addCallback(this, backPressedCallback)
+
         val index = arguments?.getInt(INDEX) ?: 0
 
         btn_back.setOnClickListener {
-            listener.onClick()
+            dispatcher.onBackPressed()
         }
 
         btn_hangul.setOnClickListener {

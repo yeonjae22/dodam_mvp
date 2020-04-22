@@ -4,7 +4,6 @@ import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import android.text.SpannableStringBuilder
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,9 +25,11 @@ import java.io.InputStreamReader
 
 class WordModifyFragment : Fragment(), WordModifyContract.View,
     BottomSheetImagePicker.OnImagesSelectedListener {
+    private val dispatcher by lazy {
+        requireActivity().onBackPressedDispatcher
+    }
     override lateinit var presenter: WordModifyContract.Presenter
     private var wordNumber: Int = 0
-    private lateinit var listener: OnClickListener
     private var imageName: String = ""
     private lateinit var imageUri: Uri
 
@@ -73,17 +74,8 @@ class WordModifyFragment : Fragment(), WordModifyContract.View,
     override fun showModifyResult(response: Boolean) {
         if (response) {
             context?.shortToast(R.string.success_update_word)
-            listener.onClick()
+            dispatcher.onBackPressed()
         }
-    }
-
-    interface OnClickListener {
-        fun onClick()
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        listener = (context as OnClickListener)
     }
 
     override fun onCreateView(
@@ -113,7 +105,7 @@ class WordModifyFragment : Fragment(), WordModifyContract.View,
         }
 
         btn_back.setOnClickListener {
-            listener.onClick()
+            dispatcher.onBackPressed()
         }
 
         btn_modify.setOnClickListener {

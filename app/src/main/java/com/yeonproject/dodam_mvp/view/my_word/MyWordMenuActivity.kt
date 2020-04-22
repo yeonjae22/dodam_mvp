@@ -6,12 +6,8 @@ import androidx.fragment.app.Fragment
 import com.yeonproject.dodam_mvp.R
 
 class MyWordMenuActivity : AppCompatActivity(), MyWordMenuFragment.OnClickListener,
-    WordRegisterFragment.OnClickListener, MyWordListFragment.OnClickListener,
-    MyWordLanguageFragment.OnClickListener, MyWordFragment.OnClickListener,
-    MyWordDetailFragment.OnClickListener, WordModifyFragment.OnClickListener {
-    override fun onClick() {
-        back()
-    }
+    MyWordListFragment.OnClickListener, MyWordLanguageFragment.OnClickListener,
+    MyWordFragment.OnClickListener, MyWordDetailFragment.OnClickListener {
 
     override fun onClick(fragment: Fragment) {
         replace(fragment, true)
@@ -32,9 +28,5 @@ class MyWordMenuActivity : AppCompatActivity(), MyWordMenuFragment.OnClickListen
                 .commit()
 
         }
-    }
-
-    private fun back() {
-        supportFragmentManager.popBackStack()
     }
 }

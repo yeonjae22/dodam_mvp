@@ -10,11 +10,13 @@ import com.yeonproject.dodam_mvp.R
 import kotlinx.android.synthetic.main.fragment_language.*
 
 class MyWordLanguageFragment : Fragment() {
+    private val dispatcher by lazy {
+        requireActivity().onBackPressedDispatcher
+    }
     private lateinit var listener: OnClickListener
 
     interface OnClickListener {
         fun onClick(fragment: Fragment)
-        fun onClick()
     }
 
     override fun onAttach(context: Context) {
@@ -32,7 +34,7 @@ class MyWordLanguageFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         btn_back.setOnClickListener {
-            listener.onClick()
+            dispatcher.onBackPressed()
         }
 
         btn_hangul.setOnClickListener {
