@@ -31,7 +31,8 @@ class WordModifyFragment : Fragment(), WordModifyContract.View,
     override lateinit var presenter: WordModifyContract.Presenter
     private var wordNumber: Int = 0
     private var imageName: String = ""
-    private lateinit var imageUri: Uri
+    private var savedImageName: String = ""
+    private var imageUri: Uri? = null
 
     override fun onImagesSelected(uris: List<Uri>, tag: String?) {
         imageContainer.removeAllViews()
@@ -69,6 +70,7 @@ class WordModifyFragment : Fragment(), WordModifyContract.View,
         iv.findViewById<ImageView>(R.id.iv_image).run {
             glideImageSet(image, measuredWidth, measuredHeight)
         }
+        savedImageName = response.image
     }
 
     override fun showModifyResult(response: Boolean) {
@@ -95,6 +97,7 @@ class WordModifyFragment : Fragment(), WordModifyContract.View,
         presenter.getMyWord(wordNumber)
 
         ib_delete.setOnClickListener {
+            savedImageName = ""
             imageContainer.removeAllViews()
             ib_delete.visibility = View.GONE
             ib_image.visibility = View.VISIBLE
@@ -112,15 +115,24 @@ class WordModifyFragment : Fragment(), WordModifyContract.View,
             when {
                 "${edt_hangul_name.text}".isEmpty() -> context?.shortToast(R.string.enter_hangul)
                 "${edt_english_name.text}".isEmpty() -> context?.shortToast(R.string.enter_english)
-                imageName.isEmpty() -> context?.shortToast(R.string.select_image)
                 else -> {
-                    createFile()
-                    presenter.updateMyWord(
-                        wordNumber,
-                        "${edt_hangul_name.text}",
-                        "${edt_english_name.text}",
-                        imageName
-                    )
+                    if (imageName == "" && savedImageName == "") {
+                        context?.shortToast(R.string.select_image)
+                    } else if (imageName == "" && savedImageName != "") {
+                        presenter.updateMyWord(
+                            wordNumber,
+                            "${edt_hangul_name.text}",
+                            "${edt_english_name.text}"
+                        )
+                    } else {
+                        createFile()
+                        presenter.updateMyWord(
+                            wordNumber,
+                            "${edt_hangul_name.text}",
+                            "${edt_english_name.text}",
+                            imageName
+                        )
+                    }
                 }
             }
         }
@@ -140,8 +152,9 @@ class WordModifyFragment : Fragment(), WordModifyContract.View,
     private fun createFile() {
         try {
             context?.openFileOutput(imageName, Context.MODE_PRIVATE).use {
-                it?.write(context?.let { it1 -> readBytes(it1, imageUri) })
+                it?.write(imageUri?.let { it1 -> readBytes(context, it1) })
             }
+
             val reader = BufferedReader(InputStreamReader(context?.openFileInput(imageName)))
         } catch (e: Exception) {
             e.printStackTrace()
@@ -149,8 +162,8 @@ class WordModifyFragment : Fragment(), WordModifyContract.View,
     }
 
     @Throws(IOException::class)
-    private fun readBytes(context: Context, uri: Uri): ByteArray? =
-        context.contentResolver.openInputStream(uri)?.buffered()?.use { it.readBytes() }
+    private fun readBytes(context: Context?, uri: Uri): ByteArray? =
+        context?.contentResolver?.openInputStream(uri)?.buffered()?.use { it.readBytes() }
 
     companion object {
         private const val WORD_NUMBER = "wordNumber"

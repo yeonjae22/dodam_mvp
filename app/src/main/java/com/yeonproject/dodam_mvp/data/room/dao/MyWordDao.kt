@@ -19,6 +19,9 @@ interface MyWordDao {
     @Query("UPDATE word SET hangul = :hangul, english = :english, image = :image WHERE wordNumber = :wordNumber")
     fun updateWord(wordNumber: Int, hangul: String, english: String, image: String): Int
 
+    @Query("UPDATE word SET hangul = :hangul, english = :english WHERE wordNumber = :wordNumber")
+    fun updateWord(wordNumber: Int, hangul: String, english: String): Int
+
     @Query("DELETE FROM word WHERE wordNumber = :wordNumber")
     fun deleteWord(wordNumber: Int): Int
 

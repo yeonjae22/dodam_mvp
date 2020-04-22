@@ -34,6 +34,15 @@ class MyWordRepositoryImpl private constructor(private val localDataSource: MyWo
         localDataSource.updateMyWord(wordNumber, hangul, english, image, callback)
     }
 
+    override fun updateMyWord(
+        wordNumber: Int,
+        hangul: String,
+        english: String,
+        callback: Callback<Boolean>
+    ) {
+        localDataSource.updateMyWord(wordNumber, hangul, english, callback)
+    }
+
     override fun deleteMyWord(wordNumber: Int, callback: Callback<Boolean>) {
         localDataSource.deleteMyWord(wordNumber, callback)
     }

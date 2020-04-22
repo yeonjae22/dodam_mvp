@@ -69,6 +69,23 @@ class MyWordLocalDataSourceImpl private constructor(
         }
     }
 
+    override fun updateMyWord(
+        wordNumber: Int,
+        hangul: String,
+        english: String,
+        callback: Callback<Boolean>
+    ) {
+        appExecutors.diskIO.execute {
+            val updateCount =
+                myWordDatabase.myWordDao().updateWord(wordNumber, hangul, english)
+            if (updateCount == 1) {
+                appExecutors.mainThread.execute {
+                    callback.onSuccess(true)
+                }
+            }
+        }
+    }
+
     override fun deleteMyWord(wordNumber: Int, callback: Callback<Boolean>) {
         appExecutors.diskIO.execute {
             val deletedCount = myWordDatabase.myWordDao().deleteWord(wordNumber)

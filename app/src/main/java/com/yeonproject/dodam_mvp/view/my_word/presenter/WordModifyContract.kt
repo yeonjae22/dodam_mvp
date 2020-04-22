@@ -13,5 +13,6 @@ interface WordModifyContract {
     interface Presenter {
         fun getMyWord(wordNumber: Int)
         fun updateMyWord(wordNumber: Int, hangul: String, english: String, image: String)
+        fun updateMyWord(wordNumber: Int, hangul: String, english: String)
     }
 }
