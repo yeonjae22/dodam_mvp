@@ -24,65 +24,49 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"
-            android:orientation="vertical"
-            android:weightSum="2">
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:weightSum="4">
+            <ImageButton
+                android:id="@+id/btn_hangul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:background="?attr/selectableItemBackground"
+                android:src="@drawable/ic_hangul" />
 
-                <ImageButton
-                    android:id="@+id/btn_hangul"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="3"
-                    android:adjustViewBounds="true"
-                    android:background="@android:color/transparent"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/hangul" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/jsdongkang_regular"
+                android:text="@string/hangul"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+        </LinearLayout>
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:fontFamily="@font/jsdongkang_regular"
-                    android:text="@string/hangul"
-                    android:textColor="@android:color/black"
-                    android:textSize="24sp" />
-            </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:weightSum="4">
+            <ImageButton
+                android:id="@+id/btn_english"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:background="?attr/selectableItemBackground"
+                android:src="@drawable/ic_english" />
 
-                <ImageButton
-                    android:id="@+id/btn_english"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="3"
-                    android:adjustViewBounds="true"
-                    android:background="@android:color/transparent"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/english" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:fontFamily="@font/jsdongkang_regular"
-                    android:text="@string/english"
-                    android:textColor="@android:color/black"
-                    android:textSize="24sp" />
-            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/jsdongkang_regular"
+                android:text="@string/english"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
