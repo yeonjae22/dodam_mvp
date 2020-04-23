@@ -13,6 +13,7 @@ class SongWebViewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_song_web_view)
         val uri = intent.getStringExtra(LINK)
         setWebView("https://$uri")
+        finish()
     }
 
     @SuppressLint("SetJavaScriptEnabled")
