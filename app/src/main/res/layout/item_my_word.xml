@@ -21,6 +21,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:background="@color/lightGray"
                     android:id="@+id/iv_image"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
@@ -35,7 +36,7 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="15dp"
                         android:layout_marginEnd="5dp"
                         android:layout_weight="8"
                         android:orientation="vertical">
@@ -61,6 +62,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:layout_marginTop="10dp"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
@@ -72,7 +74,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="?attr/selectableItemBackgroundBorderless"
-                            android:padding="10dp"
+                            android:padding="5dp"
                             android:src="@drawable/ic_more_black" />
                     </LinearLayout>
                 </LinearLayout>
