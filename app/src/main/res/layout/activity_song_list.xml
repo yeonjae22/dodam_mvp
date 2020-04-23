@@ -15,6 +15,18 @@
         android:src="@drawable/ic_left_arrow" />
 
     <LinearLayout
+        android:id="@+id/layout_progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_song_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

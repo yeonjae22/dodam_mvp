@@ -1,6 +1,7 @@
 package com.yeonproject.dodam_mvp.view.review
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.yeonproject.dodam_mvp.Injection
@@ -8,6 +9,7 @@ import com.yeonproject.dodam_mvp.R
 import com.yeonproject.dodam_mvp.data.model.WordItem
 import com.yeonproject.dodam_mvp.view.review.presenter.ReviewContract
 import com.yeonproject.dodam_mvp.view.review.presenter.ReviewPresenter
+import kotlinx.android.synthetic.main.activity_review.*
 import kotlin.random.Random
 
 class ReviewActivity : AppCompatActivity(), ReviewContract.View {
@@ -17,6 +19,8 @@ class ReviewActivity : AppCompatActivity(), ReviewContract.View {
     val wordList = mutableListOf<WordItem>()
 
     override fun showWordList(items: List<WordItem>) {
+        layout_progress_bar.visibility = View.GONE
+        review_fragment.visibility = View.VISIBLE
         val random = Random
         var i = 0
 

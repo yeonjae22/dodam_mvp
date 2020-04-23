@@ -2,6 +2,7 @@ package com.yeonproject.dodam_mvp.view.song
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.yeonproject.dodam_mvp.Injection
@@ -17,6 +18,8 @@ class SongListActivity : AppCompatActivity(), SongContract.View {
     private var songAdapter = SongAdapter()
 
     override fun showSongList(items: List<SongResponse>) {
+        layout_progress_bar.visibility = View.GONE
+        layout_song_list.visibility = View.VISIBLE
         songAdapter.addData(items)
     }
 

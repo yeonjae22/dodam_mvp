@@ -8,11 +8,24 @@
     android:weightSum="10">
 
     <LinearLayout
+        android:id="@+id/layout_progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_review"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="8"
         android:gravity="center"
         android:orientation="vertical"
+        android:visibility="gone"
         android:weightSum="9">
 
         <LinearLayout

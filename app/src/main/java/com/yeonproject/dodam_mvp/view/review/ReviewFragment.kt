@@ -21,6 +21,9 @@ class ReviewFragment : Fragment(), ReviewContract.View {
     private var count: Int = 0
     private lateinit var language: String
     override fun showWordList(items: List<WordItem>) {
+        layout_progress_bar.visibility = View.GONE
+        layout_review.visibility = View.VISIBLE
+
         val answer = (activity as ReviewActivity).wordList[count].name
         val random = Random
         val reviewList = mutableListOf<WordItem>()

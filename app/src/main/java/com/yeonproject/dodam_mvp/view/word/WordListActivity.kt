@@ -2,6 +2,7 @@ package com.yeonproject.dodam_mvp.view.word
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.yeonproject.dodam_mvp.Injection
@@ -17,6 +18,8 @@ class WordListActivity : AppCompatActivity(), WordContract.View {
     private var wordAdapter = WordAdapter()
 
     override fun showWordList(items: List<WordItem>) {
+        layout_progress_bar.visibility = View.GONE
+        layout_word_list.visibility = View.VISIBLE
         wordAdapter.addData(items)
     }
 
