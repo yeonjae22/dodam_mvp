@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">dodam_mvp</string>
-    <string name="dodamdodam">도담도담</string>
+    <string name="app_name">도담도담</string>
     <string name="learning">학습놀이</string>
     <string name="review">복습놀이</string>
     <string name="fun_songs">재미동요</string>
