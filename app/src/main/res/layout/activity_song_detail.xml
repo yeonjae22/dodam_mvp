@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:padding="10dp"
+        android:padding="5dp"
         android:src="@drawable/ic_left_arrow" />
 
     <kr.co.prnd.YouTubePlayerView
