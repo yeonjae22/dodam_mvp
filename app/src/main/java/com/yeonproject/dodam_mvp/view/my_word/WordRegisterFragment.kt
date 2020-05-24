@@ -30,7 +30,7 @@ class WordRegisterFragment : Fragment(), BottomSheetImagePicker.OnImagesSelected
     }
     override lateinit var presenter: WordRegisterContract.Presenter
     private var imageName: String = ""
-    private lateinit var imageUri: Uri
+    private var imageUri: Uri? = null
 
     override fun showMessage(response: Boolean) {
         if (response) {
@@ -58,6 +58,8 @@ class WordRegisterFragment : Fragment(), BottomSheetImagePicker.OnImagesSelected
         ib_delete.visibility = View.VISIBLE
         ib_image.visibility = View.GONE
         ib_delete.setOnClickListener {
+            imageName = ""
+            imageUri = null
             imageContainer.removeAllViews()
             ib_delete.visibility = View.GONE
             ib_image.visibility = View.VISIBLE
@@ -116,8 +118,9 @@ class WordRegisterFragment : Fragment(), BottomSheetImagePicker.OnImagesSelected
     private fun createFile() {
         try {
             context?.openFileOutput(imageName, Context.MODE_PRIVATE).use {
-                it?.write(context?.let { it1 -> readBytes(it1, imageUri) })
+                it?.write(imageUri?.let { it1 -> readBytes(context, it1) })
             }
+
             val reader = BufferedReader(InputStreamReader(context?.openFileInput(imageName)))
         } catch (e: Exception) {
             e.printStackTrace()
@@ -125,6 +128,6 @@ class WordRegisterFragment : Fragment(), BottomSheetImagePicker.OnImagesSelected
     }
 
     @Throws(IOException::class)
-    private fun readBytes(context: Context, uri: Uri): ByteArray? =
-        context.contentResolver.openInputStream(uri)?.buffered()?.use { it.readBytes() }
+    private fun readBytes(context: Context?, uri: Uri): ByteArray? =
+        context?.contentResolver?.openInputStream(uri)?.buffered()?.use { it.readBytes() }
 }
